@@ -34,11 +34,10 @@ delta_y = 30  # sliding the image window in y direction
 
 if os.path.isfile(f'{save_path}/{label_file_name}'):
     labels = pd.read_csv(f'{save_path}/labels.csv')
-    i=0
+    i=len(labels)
 else:
     labels = pd.DataFrame(columns=['image_name','label'])
-    i=len(labels)
-
+    i=0
 #%%Loop over columns and rows of digits
 
 for n in range (number_of_cols):
@@ -56,13 +55,7 @@ for n in range (number_of_cols):
 
 #%%saving the labesl file
 
-if os.path.isfile(f'{save_path}/{label_file_name}'):
-    labels.to_csv(f'{save_path}/labels_new.csv',index=False)    # if your labels.csv already exist, dont overwrite it, create a new to be save
-else:
-    labels.to_csv(f'{save_path}/{label_file_name}',index=False)
-
-
-
+labels.to_csv(f'{save_path}/{label_file_name}',index=False)
 
 
 
